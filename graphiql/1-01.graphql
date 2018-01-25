@@ -1,0 +1,53 @@
+# query
+query fetch_film ($id: Int) {
+  film (id: $id) {
+    title
+    release_date
+    characters (limit: 3) {
+      name
+      homeworld {
+        name
+        population
+      }
+    }
+  }
+}
+
+# query variables
+{
+  "id": 1
+}
+
+# query result
+{
+  "data": {
+    "film": {
+      "title": "A New Hope",
+      "release_date": "1977-05-25T00:00:00.000Z",
+      "characters": [
+        {
+          "name": "Luke Skywalker",
+          "homeworld": {
+            "name": "Tatooine",
+            "population": 200000
+          }
+        },
+        {
+          "name": "C-3PO",
+          "homeworld": {
+            "name": "Tatooine",
+            "population": 200000
+          }
+        },
+        {
+          "name": "R2-D2",
+          "homeworld": {
+            "name": "Naboo",
+            "population": 4500000000
+          }
+        }
+      ]
+    }
+  }
+}
+
