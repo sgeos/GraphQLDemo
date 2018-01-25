@@ -1,0 +1,63 @@
+# query
+query find ($film: Int, $person: Int) {
+  film (id: $film) {
+    name: title
+    release_date
+  }
+  luke: person(id: $person) {
+    name
+    homeworld {
+      name
+    }
+  }
+}
+
+# query variables
+{
+  "film": 1,
+  "person": 2
+}
+
+# # Schema
+#
+# scalar Date
+# 
+# type Person {
+#   name: String!
+#   homeworld: Planet
+#   films: [Film]
+# }
+# 
+# type Film {
+#   title: String!
+#   producers: [String]
+#   characters: [Person]
+#   release_date: Date
+# }
+# 
+# type Planet {
+#   name: String!
+#   population: Int
+# }
+# 
+# type Query {
+#   film (id: Int): Film
+#   person (id: Int): Person
+# }
+
+# query result
+{
+  "data": {
+    "film": {
+      "name": "A New Hope",
+      "release_date": "1977-05-25"
+    },
+    "luke": {
+      "name": "Luke Skywalker",
+      "homeworld": {
+        "name": "Tatooine",
+      }
+    }
+  }
+}
+

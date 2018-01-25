@@ -1,0 +1,57 @@
+# query
+{
+  film (id: 1) {
+    name: title
+    release_date
+  }
+  luke: person(id: 2) {
+    name
+    homeworld {
+      name
+    }
+  }
+}
+
+# # Schema
+#
+# scalar Date
+# 
+# type Person {
+#   name: String!
+#   homeworld: Planet
+#   films: [Film]
+# }
+# 
+# type Film {
+#   title: String!
+#   producers: [String]
+#   characters: [Person]
+#   release_date: Date
+# }
+# 
+# type Planet {
+#   name: String!
+#   population: Int
+# }
+# 
+# type Query {
+#   film (id: Int): Film
+#   person (id: Int): Person
+# }
+
+# query result
+{
+  "data": {
+    "film": {
+      "name": "A New Hope",
+      "release_date": "1977-05-25"
+    },
+    "luke": {
+      "name": "Luke Skywalker",
+      "homeworld": {
+        "name": "Tatooine",
+      }
+    }
+  }
+}
+
