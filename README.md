@@ -28,6 +28,12 @@ Note that this is not the official GraphQL library!
 npm install graph.ql # not the official GraphQL library!
 ```
 
+Run the demo with **node** as follows.
+
+```sh
+node nodejs/main.js
+```
+
 ## References:
 
 - [Node.js][nodejs]
