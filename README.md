@@ -21,11 +21,13 @@ $ npm -v
 4.6.1
 ```
 
-The **npm** library [graph.ql][npm-graphql] is also required for this demo.
-Note that this is not the official GraphQL library!
+The **npm** libraries [graph.ql][npm-graphql] and axios are also required for this demo.
+Note that **graph.ql** is not the official GraphQL library!
+Also not that **axios** could easily be swapped for your HTTP client of choice.
 
 ```sh
 npm install graph.ql # not the official GraphQL library!
+npm install axios # could easily swap in any HTTP client
 ```
 
 Run the demo with **node** as follows.
@@ -34,15 +36,21 @@ Run the demo with **node** as follows.
 node nodejs/main.js
 ```
 
+The demo makes use of the [Star Wars API][star-wars-api].
+
 ## References:
 
 - [Node.js][nodejs]
+- [npm, axios][npm-axios]
 - [npm, graph.ql][npm-graphql]
+- [Star Wars API][star-wars-api]
 - [Udemy][udemy]
 - [Udemy, Building Better APIs with GraphQL][udemy-graphql]
 
 [nodejs]: https://nodejs.org/
+[npm-axios]: https://www.npmjs.com/package/axios
 [npm-graphql]: https://www.npmjs.com/package/graph.ql
+[star-wars-api]: https://swapi.co
 [udemy]: https://www.udemy.com
 [udemy-graphql]: https://www.udemy.com/building-better-apis-with-graphql/
 

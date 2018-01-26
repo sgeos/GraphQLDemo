@@ -1,28 +1,15 @@
 var Schema = require('graph.ql')
-
-var characters = {
-  1: {
-    id: 1,
-    name: 'Matt'
-  },
-  2: {
-    id: 2,
-    name: 'Nicole'
-  },
-  3: {
-    id: 3,
-    name: 'Tammy'
-  }
-}
+var axios = require('axios')
 
 var schema = Schema(`
   scalar Date
 
   type Character {
-    id: Int
     name: String!
-    homeworld: Planet
-    films: [Film]
+    eye_color: String
+    gender: String
+    homeworld(): Planet
+    films(): [Film]
   }
 
   type Film {
@@ -34,7 +21,7 @@ var schema = Schema(`
 
   type Planet {
     name: String!
-    population: Int
+    population: String # Int is limited to 32 bits
   }
 
   type Query {
@@ -49,40 +36,50 @@ var schema = Schema(`
     }
   },
   Character: {
-
+    homeworld (character, args) {
+      //console.log("homeworld(", "character =", character, ", args =", args, ")")
+      return axios.get(character.homeworld)
+        .then(res => res.data)
+    },
+    films (character, args) {
+      //console.log("films(", "character =", character, ", args =", args, ")")
+      return axios.all(character.films.map(url => {
+        //console.log("films() => axios.all(character.films.map( function(", "url =", url, ") )")
+        return axios.get(url).then(res => {
+          //console.log("films() => axios.all(character.films.map( function(", "url =", url, ") ))", "res.data =", res.data)
+          return res.data
+        })
+      }))
+    }
   },
   Film: {
     producers (film, args) {
       //console.log("producers(", "film =", film, ", args =", args, ")")
-      return film.producers.split(',')
+      return film.producer.split(/\s*,\s*/)
     },
     characters (film, args) {
       //console.log("characters(", "film =", film, ", args =", args, ")")
-      var ids = args.limit
-        ? film.character_ids.slice(0, args.limit)
-        : film.character_ids
-      return ids.map(function (id) {
-        //console.log("characters() => film.character_ids.map( function(", "id =", id, ")", "characters[id] =", characters[id])
-        return characters[id]
-      })
+      var characters = args.limit
+        ? film.characters.slice(0, args.limit)
+        : film.characters
+      return axios.all(characters.map(url => {
+        //console.log("characters() => axios.all(film.characters.map( function(", "url =", url, ") )")
+        return axios.get(url).then(res => {
+          //console.log("characters() => axios.all(film.characters.map( function(", "url =", url, ") ))", "res.data =", res.data)
+          return res.data
+        })
+      }))
     }
   },
-  Planet: {
-
-  },
+  //Planet: { },
   Query: {
     find_film (query, args) {
       //console.log("find_film(", "query =", query, ", args =", args, ")")
-      return {
-        title: 'A New Hope',
-        producers: 'John,Matt,Marc',
-        release_date: '1984-02-12',
-        character_ids: [1, 2, 3]
-      }
+      return axios.get(`http://swapi.co/api/films/${args.id}/`)
+        .then(res => res.data)
     },
     find_character (query, args) {
       //console.log("find_character(", "query =", query, ", args =", args, ")")
-
     }
   }
 })
@@ -93,9 +90,16 @@ schema(`
       title
       producers
       release_date
-      characters (limit: 2) {
-        id
+      characters (limit: 4) {
         name
+        films {
+          title
+          release_date
+        }
+        homeworld {
+          name
+          population
+        }
       }
     }
   }
