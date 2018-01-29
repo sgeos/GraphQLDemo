@@ -24,7 +24,8 @@ $ npm -v
 Many **npm** packages are required for this demo.
 Note that **graph.ql** and **express-graph.ql** are not official GraphQL libraries!
 **dataloader** is an official library.
-Also note that **axios** could easily be swapped for your HTTP client of choice.
+Also note that **axios** and **remarkable** could easily be swapped for the HTTP client
+and markdown parser of your choice, respectively.
 
 ```sh
 npm install express
@@ -32,9 +33,14 @@ npm install graph.ql # not the official GraphQL library!
 npm install express-graph.ql # also not official!
 npm install dataloader # official
 npm install axios # could easily swap in any HTTP client
+npm install remarkable # could easily swap in any markdown parser
+npm install to-slug-case
+npm install object-assign
 ```
 
-Run the demo with **node** as follows.
+# Query Demo
+
+Run the [Star Wars API][star-wars-api] query demo with **node** as follows.
 
 ```sh
 node starwars/server.js
@@ -74,7 +80,6 @@ query find ($film: Int!) {
 }
 ```
 
-The demo makes use of the [Star Wars API][star-wars-api].
 The query should return the following results.
 
 ```javascript
@@ -180,6 +185,14 @@ The query should return the following results.
 }
 ```
 
+# Mutation Demo
+
+When complete, run the blog mutation demo with **node** as follows.
+
+```sh
+node blog/server.js
+```
+
 ## References:
 
 - [GraphiQL Standalone Tool][graphiql-standalone]
@@ -191,6 +204,9 @@ The query should return the following results.
 - [npm, express][npm-express]
 - [npm, express-graph.ql][npm-express-graphiql]
 - [npm, graph.ql][npm-graphql]
+- [npm, object-assign][npm-object-assign]
+- [npm, remarkable][npm-remarkable]
+- [npm, to-slug-case][npm-to-slug-case]
 - [Star Wars API][star-wars-api]
 - [Udemy][udemy]
 - [Udemy, Building Better APIs with GraphQL][udemy-graphql]
@@ -204,6 +220,9 @@ The query should return the following results.
 [npm-express]: https://www.npmjs.com/package/express
 [npm-express-graphiql]: https://www.npmjs.com/package/express-graph.ql
 [npm-graphql]: https://www.npmjs.com/package/graph.ql
+[npm-object-assign]: https://www.npmjs.com/package/object-assign
+[npm-remarkable]: https://www.npmjs.com/package/remarkable.ql
+[npm-to-slug-case]: https://www.npmjs.com/package/to-slug-case
 [star-wars-api]: https://swapi.co
 [udemy]: https://www.udemy.com
 [udemy-graphql]: https://www.udemy.com/building-better-apis-with-graphql/
