@@ -37,7 +37,7 @@ npm install axios # could easily swap in any HTTP client
 Run the demo with **node** as follows.
 
 ```sh
-node nodejs/server.js
+node starwars/server.js
 ```
 
 Navigate to [localhost:5000][localhost-5000] and watch the server output to see how long a query
