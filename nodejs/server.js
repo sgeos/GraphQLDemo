@@ -10,6 +10,7 @@ app.post('/query', graphql(Schema))
 // http://localhost:5000?film=4
 app.get('/', function (req, res) {
   console.log("/", "query =", req.query)
+  console.time('Without data loader')
   var film = req.query.film || 1
 
   Schema(`
@@ -24,6 +25,9 @@ app.get('/', function (req, res) {
             name
             population
           }
+          films {
+            title
+          }
         }
       }
     }
@@ -31,6 +35,7 @@ app.get('/', function (req, res) {
     film: film
   }).then(function (result) {
     console.dir(result, { colors: true, depth: Infinity })
+    console.timeEnd('Without data loader')
     res.send(result)
   })
 })

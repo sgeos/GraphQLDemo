@@ -21,16 +21,17 @@ $ npm -v
 4.6.1
 ```
 
-The **npm** libraries [graph.ql][npm-graphql], [axios][npm-axios], [express][npm-express]
-and [express-graph.ql][npm-express-graphiql] are also required for this demo.
+Many **npm** packages are required for this demo.
 Note that **graph.ql** and **express-graph.ql** are not official GraphQL libraries!
+**dataloader** is an official library.
 Also note that **axios** could easily be swapped for your HTTP client of choice.
 
 ```sh
-npm install graph.ql # not the official GraphQL library!
-npm install axios # could easily swap in any HTTP client
 npm install express
-npm install express-graph.ql # also not the official!
+npm install graph.ql # not the official GraphQL library!
+npm install express-graph.ql # also not official!
+npm install dataloader # official
+npm install axios # could easily swap in any HTTP client
 ```
 
 Run the demo with **node** as follows.
@@ -38,6 +39,9 @@ Run the demo with **node** as follows.
 ```sh
 node nodejs/server.js
 ```
+
+Navigate to [localhost:5000][localhost-5000] and watch the server output to see how long a query
+takes to run without Dataloader.
 
 Download and install the [GraphiQL Standalone Tool][graphiql-standalone] to run GraphQL queries.
 Note that the tool has an 'i' in the name, Graph *i* QL.
