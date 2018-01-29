@@ -51,7 +51,8 @@ takes to run with Dataloader.
 
 Download and install the [GraphiQL Standalone Tool][graphiql-standalone] to run GraphQL queries.
 Note that the tool has an 'i' in the name, Graph *i* QL.
-Navigate to the [http://localhost:5000/query][localhost-5000-query] and enter the following query.
+Navigate to the [http://localhost:5000/query][localhost-5000-query] and enter the following query
+and query variables.
 
 ```graphql
 query find ($film: Int!) {
@@ -73,6 +74,8 @@ query find ($film: Int!) {
   }
 }
 ```
+
+Query variables.
 
 ```javascript
 {
@@ -187,10 +190,100 @@ The query should return the following results.
 
 # Mutation Demo
 
-When complete, run the blog mutation demo with **node** as follows.
+Run the blog mutation demo with **node** as follows.
 
 ```sh
 node blog/server.js
+```
+
+Point the [GraphiQL Standalone Tool][graphiql-standalone] at
+[http://localhost:5000/query][localhost-5000-query] and enter the following mutation and
+query variables to create a blog post.
+
+```graphql
+mutation create ($post: PostInput!) {
+  post: create_post (post: $post) {
+    title
+    slug
+    date
+    body
+  }
+}
+```
+
+Query variables.
+
+```javascript
+{
+  "post": {
+    "title": "GraphQL 101",
+    "date": "2015-05-21",
+    "body": "# All about GraphQL"
+  }
+}
+```
+
+The mutation should return the following results.
+
+```javascript
+{
+  "data": {
+    "post": {
+      "title": "GraphQL 101",
+      "slug": "graphql-101",
+      "date": "2015-05-21T00:00:00.000Z",
+      "body": "<h1>All about GraphQL</h1>\n"
+    }
+  }
+}
+```
+
+Next, try the same mutation again with the following query variables.
+
+```javascript
+{
+  "post": {
+    "title": "GraphQL 102",
+    "date": "2015-05-21",
+    "body": "# All about GraphQL"
+  }
+}
+```
+
+Enter the following query to retrieve all existing blog posts.
+
+```graphql
+query get_posts {
+  posts: all_posts {
+    title
+    date
+    slug
+    body
+  }
+}
+```
+
+The query should return the following if two slightly different blog posts have been created.
+
+```javascript
+{
+  "data": {
+    "posts": [
+      {
+        "title": "GraphQL 101",
+        "date": "2015-05-21T00:00:00.000Z",
+        "slug": "graphql-101",
+        "body": "<h1>All about GraphQL</h1>\n"
+      },
+      {
+        "title": "GraphQL 102",
+        "date": "2015-05-21T00:00:00.000Z",
+        "slug": "graphql-102",
+        "body": "<h1>All about GraphQL</h1>\n"
+      }
+    ]
+  }
+}
 ```
 
 ## References:
