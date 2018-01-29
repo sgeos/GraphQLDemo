@@ -31,6 +31,7 @@ module.exports = Schema(`
 
   type Query {
     all_posts(): [Post]
+    get_post(slug: String): Post
   }
 `, {
   Date: {
@@ -72,6 +73,10 @@ module.exports = Schema(`
       return Object.keys(posts).map(function (slug) {
         return posts[slug]
       })
+    },
+    get_post (query, args) {
+      //console.log("Query single_post(", "query =", query, ", args =", args, ")")
+      return posts[args.slug]
     }
   }
 })

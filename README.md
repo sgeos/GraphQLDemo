@@ -286,6 +286,40 @@ The query should return the following if two slightly different blog posts have 
 }
 ```
 
+Enter the following query and query variables to retrieve a single blog posts by slug.
+
+```graphql
+query get_posts($slug: String!) {
+  post: get_post(slug: $slug) {
+    title
+    date
+    slug
+  }
+}
+```
+
+Query variables.
+
+```javascript
+{
+  "slug": "graphql-102"
+}
+```
+
+The query should return the following results.
+
+```javascript
+{
+  "data": {
+    "post": {
+      "title": "GraphQL 102",
+      "date": "2015-05-21T00:00:00.000Z",
+      "slug": "graphql-102"
+    }
+  }
+}
+```
+
 ## References:
 
 - [GraphiQL Standalone Tool][graphiql-standalone]
