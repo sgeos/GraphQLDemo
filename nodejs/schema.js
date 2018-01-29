@@ -24,8 +24,11 @@ module.exports = Schema(`
     population: String # Int is limited to 32 bits
   }
 
+  # These are the queries available on this server.
   type Query {
+    # Find a film by id.
     find_film (id: Int): Film
+    # Find a character by id.
     find_character (id: Int): Character
   }
 `, {

@@ -1,6 +1,9 @@
+var graphql = require('express-graph.ql')
 var Schema = require('./schema.js')
 var express = require('express')
 var app = express()
+
+app.post('/query', graphql(Schema))
 
 // Get results by navigating to something like one of the following URLs.
 // http://localhost:5000
