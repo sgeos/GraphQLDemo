@@ -1,19 +1,22 @@
 var graphql = require('express-graph.ql')
 var Schema = require('./schema.js')
+var Loader = require('./loader.js')
 var express = require('express')
 var app = express()
 
-app.post('/query', graphql(Schema))
+app.use(function (req, res, next) {
+  req.loader = Loader()
+  next()
+})
 
-// Get results by navigating to something like one of the following URLs.
-// http://localhost:5000
-// http://localhost:5000?film=4
+app.post('/query', graphql(Schema(Loader())))
+
 app.get('/', function (req, res) {
   console.log("/", "query =", req.query)
-  console.time('Without data loader')
+  console.time('With data loader')
   var film = req.query.film || 1
 
-  Schema(`
+  Schema(req.loader)(`
     query find ($film: Int) {
       film: find_film(id: $film) {
         title
@@ -35,7 +38,7 @@ app.get('/', function (req, res) {
     film: film
   }).then(function (result) {
     console.dir(result, { colors: true, depth: Infinity })
-    console.timeEnd('Without data loader')
+    console.timeEnd('With data loader')
     res.send(result)
   })
 })

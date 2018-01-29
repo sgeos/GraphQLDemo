@@ -42,17 +42,17 @@ function Planet () {
   })
 }
 
-function test() {
-  var film = Film()
-  film.loadMany([1, 'http://swapi.co/api/films/3/'])
-    .then(data => console.log(data))
-  var character = Character()
-  character.loadMany([1, 'http://swapi.co/api/people/3/'])
-    .then(data => console.log(data))
-  var planet = Planet()
-  planet.loadMany([1, 'http://swapi.co/api/planets/3/'])
-    .then(data => console.log(data))
-}
-
-test()
+// function test() {
+//   var film = Film()
+//   film.loadMany([1, 'http://swapi.co/api/films/3/'])
+//     .then(data => console.log(data))
+//   var character = Character()
+//   character.loadMany([1, 'http://swapi.co/api/people/3/'])
+//     .then(data => console.log(data))
+//   var planet = Planet()
+//   planet.loadMany([1, 'http://swapi.co/api/planets/3/'])
+//     .then(data => console.log(data))
+// }
+// 
+// test()
 

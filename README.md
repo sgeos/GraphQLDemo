@@ -41,7 +41,7 @@ node nodejs/server.js
 ```
 
 Navigate to [localhost:5000][localhost-5000] and watch the server output to see how long a query
-takes to run without Dataloader.
+takes to run with Dataloader.
 
 Download and install the [GraphiQL Standalone Tool][graphiql-standalone] to run GraphQL queries.
 Note that the tool has an 'i' in the name, Graph *i* QL.
