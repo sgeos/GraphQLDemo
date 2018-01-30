@@ -2,26 +2,44 @@ var Schema = require('graph.ql')
 
 module.exports = function (loader) {
   return Schema(`
+    # A date.  This scalar datatype is not built into GraphQL.
     scalar Date
 
+    # A character in the Star Wars universe.
     type Character {
+      # The name of the character.
       name: String!
+      # The eye color of the character.
       eye_color: String
+      # The gender of the character.
       gender: String
+      # The homeworld the character.
       homeworld(): Planet
+      # The films the character has appeared in.
       films(): [Film]
     }
 
+    # A Star Wars film.
     type Film {
+      # The title of the film.
       title: String!
+      # The producers of the film.
       producers(): [String]
+      # The characters in the film.
       characters(limit: Int): [Character]
+      # The release date of the film.
       release_date: Date
     }
 
+    # A planet in the Star Wars universe.
     type Planet {
+      # The name of the planet.
       name: String!
-      population: String # Int is limited to 32 bits
+      # The population of the planet.
+      # This field is a string because some populations are so
+      # large they can not be represented by a 32 bit integer.
+      # Additionally, some populations are unknown or otherwise have a textual description.
+      population: String
     }
 
     # These are the queries available on this server.
