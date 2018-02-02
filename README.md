@@ -320,9 +320,38 @@ The query should return the following results.
 }
 ```
 
+# More Information
+
+- The [GraphQL specification][graphql-spec] can be found on GitHub.
+- The [GraphQL home page][graphql-home] has a lot of information on GraphQL.  It has learning
+  material that includes topics not covered in this demo.  The community resources are very
+  useful.
+- The [official GraphQL repository][fb-graphql-github] also good introductory learning material on
+  GraphQL.
+- The stand alone GraphiQL was used in this demo, but the official
+  [FaceBook GraphiQL repository][fb-graphiql-github] is also worth looking at.
+- The [Apollo][graphql-apollo] set of open source toolss can be used to build products with GraphQL.
+  The provide tools for easily building GraphQL clients.
+- The [Zero to GraphQL in 30 Minutes][graphql-zero-to-graphql] YouTube video covers building a
+  simple GraphQL API in three languages in 30 minutes.
+- The [GraphQL Subscriptions][graphql-sub] YouTube video covers GraphQL API design in the context of
+  subscriptions and realtime data.
+- The [GraphQL, Lessons from 4 Years of GraphQL][graphql-lessons] video gives a history of GraphQL
+  and covers API design philosophy.
+- The [Things You Should Never Do][joel-never-do] blog post is mentioned in the above video because
+  it is relevant to the GraphQL design philosophy of a versionless API that is constantly evolving.
+
 ## References:
 
-- [GraphiQL Standalone Tool][graphiql-standalone]
+- [GraphQL, Apollo GraphQL][graphql-apollo]
+- [GraphQL, Facebook GraphiQL GitHub Repository][fb-graphiql-github]
+- [GraphQL, Facebook GraphQL GitHub Repository][fb-graphql-github]
+- [GraphQL, GraphiQL Standalone Tool][graphiql-standalone]
+- [GraphQL, GraphQL Specification][graphql-spec]
+- [GraphQL, Home Page][graphql-home]
+- [GraphQL, Lessons from 4 Years of GraphQL (YouTube Video)][graphql-lessons]
+- [GraphQL, ReactiveConf 2017 - Uri Goldshtein: GraphQL Subscriptions (YouTube Video)][graphql-sub]
+- [GraphQL, Zero to GraphQL in 30 Minutes – Steven Luscher (YouTube Video)][graphql-zero-to-graphql]
 - [JSON Formatter][json-formatter]
 - [Localhost, Port 5000][localhost-5000]
 - [Localhost, Port 5000, GraphQL Query][localhost-5000-query]
@@ -335,10 +364,20 @@ The query should return the following results.
 - [npm, remarkable][npm-remarkable]
 - [npm, to-slug-case][npm-to-slug-case]
 - [Star Wars API][star-wars-api]
+- [Joel on Software, Things You Should Never Do, Part I][joel-never-do]
 - [Udemy][udemy]
 - [Udemy, Building Better APIs with GraphQL][udemy-graphql]
 
+[graphql-apollo]: https://github.com/apollographql
+[fb-graphql-github]: https://github.com/facebook/graphql
+[fb-graphiql-github]: https://github.com/graphql/graphiql
+[graphql-home]: http://graphql.org
+[graphql-lessons]: https://www.youtube.com/watch?v=zVNrqo9XGOs
+[graphql-spec]: https://github.com/facebook/graphql/tree/master/spec
+[graphql-sub]: https://www.youtube.com/watch?v=Wi7P39sF2nw
+[graphql-zero-to-graphql]: https://www.youtube.com/watch?v=UBGzsb2UkeY
 [graphiql-standalone]: https://github.com/skevy/graphiql-app
+[joel-never-do]: https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/
 [json-formatter]: https://jsonformatter.curiousconcept.com
 [localhost-5000]: http://localhost:5000
 [localhost-5000-query]: http://localhost:5000/query
